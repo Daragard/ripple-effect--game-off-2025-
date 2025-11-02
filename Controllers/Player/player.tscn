@@ -1,0 +1,92 @@
+[gd_scene load_steps=13 format=3 uid="uid://c5616dh1njf1e"]
+
+[ext_resource type="SpriteFrames" uid="uid://yxelobvwv3f4" path="res://Resources/default_male_animations.tres" id="1_ey6tl"]
+[ext_resource type="Script" uid="uid://binw5183yf80" path="res://Controllers/Player/player.gd" id="1_us6fa"]
+[ext_resource type="Script" uid="uid://c50cmb5nk2spj" path="res://Controllers/State Machine/state_machine.gd" id="2_4krcl"]
+[ext_resource type="Script" uid="uid://b4tgj3rq8n1bg" path="res://Controllers/Player/States/player_idle_state.gd" id="3_us6fa"]
+[ext_resource type="Script" uid="uid://fpofkv61lgnu" path="res://Controllers/Player/States/player_run_state.gd" id="5_xvfkl"]
+[ext_resource type="Script" uid="uid://hs5ph87u0qyh" path="res://Controllers/Player/States/player_jump_state.gd" id="6_gbsjg"]
+[ext_resource type="Script" uid="uid://bqp6fvyne1vfc" path="res://Controllers/Player/States/player_wall_slide_state.gd" id="7_gblqa"]
+[ext_resource type="Script" uid="uid://v71j738rk00e" path="res://Controllers/Player/States/player_fall_state.gd" id="8_0t6vc"]
+[ext_resource type="Script" uid="uid://nbqsxxjxq0y2" path="res://Controllers/Player/jump_buffer.gd" id="9_ik8wc"]
+[ext_resource type="Script" uid="uid://rxqt8qyuldaw" path="res://Controllers/Player/wall_collisions.gd" id="10_lhgpe"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4pj0q"]
+radius = 5.0
+height = 28.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ik8wc"]
+size = Vector2(18, 20)
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("STATE_MACHINE", "ANIMATED_SPRITE")]
+collision_layer = 2
+script = ExtResource("1_us6fa")
+SPEED = 600.0
+ACCELERATION = 1800.0
+DECELERATION = 2700.0
+JUMP_VELOCITY = -35.0
+WALL_JUMP_LEAP = 500.0
+STATE_MACHINE = NodePath("StateMachine")
+ANIMATED_SPRITE = NodePath("AnimatedSprite2D")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("1_ey6tl")
+animation = &"wall_slide"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+shape = SubResource("CapsuleShape2D_4pj0q")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("CURRENT_STATE")]
+script = ExtResource("2_4krcl")
+CURRENT_STATE = NodePath("PlayerIdleState")
+
+[node name="PlayerIdleState" type="Node" parent="StateMachine" node_paths=PackedStringArray("JUMP_BUFFER", "COYOTE_TIMER")]
+script = ExtResource("3_us6fa")
+JUMP_BUFFER = NodePath("../../JumpBuffer")
+COYOTE_TIMER = NodePath("../PlayerFallState")
+
+[node name="PlayerRunState" type="Node" parent="StateMachine" node_paths=PackedStringArray("JUMP_BUFFER", "COYOTE_TIMER")]
+script = ExtResource("5_xvfkl")
+JUMP_BUFFER = NodePath("../../JumpBuffer")
+COYOTE_TIMER = NodePath("../PlayerFallState")
+
+[node name="PlayerJumpState" type="Node" parent="StateMachine"]
+script = ExtResource("6_gbsjg")
+
+[node name="PlayerWallSlideState" type="Timer" parent="StateMachine" node_paths=PackedStringArray("JUMP_BUFFER")]
+wait_time = 0.5
+script = ExtResource("7_gblqa")
+JUMP_BUFFER = NodePath("../../JumpBuffer")
+
+[node name="PlayerFallState" type="Timer" parent="StateMachine" node_paths=PackedStringArray("WALL_COLLISIONS", "JUMP_BUFFER")]
+one_shot = true
+script = ExtResource("8_0t6vc")
+WALL_COLLISIONS = NodePath("../../WallCollisions")
+JUMP_BUFFER = NodePath("../../JumpBuffer")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="JumpBuffer" type="Timer" parent="."]
+wait_time = 0.1
+script = ExtResource("9_ik8wc")
+
+[node name="WallCollisions" type="Node2D" parent="."]
+script = ExtResource("10_lhgpe")
+
+[node name="RightCollider" type="Area2D" parent="WallCollisions"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallCollisions/RightCollider"]
+position = Vector2(14, 0)
+shape = SubResource("RectangleShape2D_ik8wc")
+
+[node name="LeftCollider" type="Area2D" parent="WallCollisions"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallCollisions/LeftCollider"]
+position = Vector2(-14, 0)
+shape = SubResource("RectangleShape2D_ik8wc")
+
+[connection signal="timeout" from="StateMachine/PlayerWallSlideState" to="StateMachine/PlayerWallSlideState" method="_on_timeout"]
+[connection signal="timeout" from="StateMachine/PlayerFallState" to="StateMachine/PlayerFallState" method="_on_timeout"]
+[connection signal="timeout" from="JumpBuffer" to="JumpBuffer" method="_on_timeout"]
