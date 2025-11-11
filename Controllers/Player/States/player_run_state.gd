@@ -32,4 +32,4 @@ func update(delta: float) -> void:
 	
 	elif !PLAYER.is_on_floor():
 		COYOTE_TIMER.coyote_start()
-		transition.emit("PlayerFallingState")
+		transition.emit("PlayerFallState")

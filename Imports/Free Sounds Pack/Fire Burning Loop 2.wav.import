@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://d2x7yrv2jl5fr"
+path="res://.godot/imported/Fire Burning Loop 2.wav-838543aa82b2c213e1a76e8ff354461d.sample"
+
+[deps]
+
+source_file="res://Imports/Free Sounds Pack/Fire Burning Loop 2.wav"
+dest_files=["res://.godot/imported/Fire Burning Loop 2.wav-838543aa82b2c213e1a76e8ff354461d.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

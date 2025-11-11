@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://d4lwql3o6igcs"]
+
+[ext_resource type="Texture2D" uid="uid://c0yuf4cvilk0a" path="res://Resources/Art/Semi-SolidPlatform.png" id="1_hluan"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hluan"]
+size = Vector2(32, 3)
+
+[node name="Semi-SolidPlatform" type="StaticBody2D"]
+scale = Vector2(2, 2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_hluan")
+one_way_collision = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 6)
+texture = ExtResource("1_hluan")

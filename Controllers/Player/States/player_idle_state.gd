@@ -21,6 +21,5 @@ func update(delta: float) -> void:
 	elif PLAYER.velocity.length() > 0.0 and PLAYER.is_on_floor():
 		transition.emit("PlayerRunState")
 		
-	elif PLAYER.velocity.y < -3.0 and !PLAYER.is_on_floor():
-		COYOTE_TIMER.coyote_start()
+	elif !PLAYER.is_on_floor():
 		transition.emit("PlayerFallState")

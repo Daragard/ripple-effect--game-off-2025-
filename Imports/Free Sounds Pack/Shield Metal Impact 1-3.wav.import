@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://mbvg8o5gtjsd"
+path="res://.godot/imported/Shield Metal Impact 1-3.wav-a6dcc95ceb6700d3cfc741f42ab35725.sample"
+
+[deps]
+
+source_file="res://Imports/Free Sounds Pack/Shield Metal Impact 1-3.wav"
+dest_files=["res://.godot/imported/Shield Metal Impact 1-3.wav-a6dcc95ceb6700d3cfc741f42ab35725.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

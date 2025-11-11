@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://q6cl0rvdpt6c"
+path="res://.godot/imported/Book Page 1-2.wav-eb58cead9b53e187d9bd03bc1c755571.sample"
+
+[deps]
+
+source_file="res://Imports/Free Sounds Pack/Book Page 1-2.wav"
+dest_files=["res://.godot/imported/Book Page 1-2.wav-eb58cead9b53e187d9bd03bc1c755571.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

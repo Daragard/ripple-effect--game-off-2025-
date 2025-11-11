@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="SceneList" load_steps=4 format=3 uid="uid://ymis0xoqtktf"]
+
+[ext_resource type="Script" uid="uid://dfvpakclsooim" path="res://Resources/scene_list_template.gd" id="1_edol8"]
+[ext_resource type="PackedScene" uid="uid://cd7o8og5o2qxs" path="res://Levels/1-1.tscn" id="1_tbxy0"]
+[ext_resource type="PackedScene" uid="uid://dgqut4grl17kd" path="res://Levels/1-2.tscn" id="2_h7bdu"]
+
+[resource]
+script = ExtResource("1_edol8")
+scenes = Array[PackedScene]([ExtResource("1_tbxy0"), ExtResource("2_h7bdu")])
+metadata/_custom_type_script = "uid://dfvpakclsooim"

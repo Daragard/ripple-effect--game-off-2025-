@@ -1,0 +1,137 @@
+[gd_resource type="TileSet" load_steps=14 format=3 uid="uid://s4n3jdaupig5"]
+
+[ext_resource type="Texture2D" uid="uid://bitr33dgl8e4a" path="res://Resources/Art/LabFlooring.png" id="1_oab1w"]
+[ext_resource type="Texture2D" uid="uid://d3lft4t8og4ct" path="res://Resources/Art/Spikes.png" id="2_02qt5"]
+[ext_resource type="Texture2D" uid="uid://cmuk5ikfjcv8r" path="res://Resources/Art/arrow-sign.png" id="3_42xb3"]
+[ext_resource type="Texture2D" uid="uid://b7iesbpgcpqh8" path="res://Resources/Art/arrow-sign_0002.png" id="4_qgc2o"]
+[ext_resource type="Texture2D" uid="uid://b8egw6jooy55f" path="res://Resources/Art/warning_sign.png" id="5_e67g8"]
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_66x82"]
+tile_data = PackedInt32Array(0, 262144, 0, 1, 327680, 0)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_prper"]
+tile_data = PackedInt32Array(0, 327680, 65536, 1, 262144, 65536)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_b1mfr"]
+tile_data = PackedInt32Array(0, 262144, 131072, 1, 327680, 131072)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rf6l5"]
+texture = ExtResource("1_oab1w")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:0/next_alternative_id = 4
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, 8, -8, 8)
+3:0/1 = 1
+3:0/1/flip_h = true
+3:0/1/physics_layer_0/polygon_0/points = PackedVector2Array(8, -8, 8, 8, -8, 8)
+3:0/2 = 2
+3:0/2/flip_v = true
+3:0/2/physics_layer_0/polygon_0/points = PackedVector2Array(8, -8, -8, 8, -8, -8)
+3:0/3 = 3
+3:0/3/flip_h = true
+3:0/3/flip_v = true
+3:0/3/physics_layer_0/polygon_0/points = PackedVector2Array(8, -8, 8, 8, -8, -8)
+4:0/next_alternative_id = 4
+4:0/0 = 0
+4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, 0)
+4:0/1 = 1
+4:0/1/flip_h = true
+4:0/1/physics_layer_0/polygon_0/points = PackedVector2Array(8, 8, -8, 8, -8, 0, 8, -8)
+4:0/2 = 2
+4:0/2/flip_v = true
+4:0/2/physics_layer_0/polygon_0/points = PackedVector2Array(8, 0, -8, 8, -8, -8, 8, -8)
+4:0/3 = 3
+4:0/3/flip_h = true
+4:0/3/flip_v = true
+4:0/3/physics_layer_0/polygon_0/points = PackedVector2Array(8, 8, -8, 0, -8, -8, 8, -8)
+5:0/next_alternative_id = 4
+5:0/0 = 0
+5:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 8, -8, 0, 8, 8)
+5:0/1 = 1
+5:0/1/flip_h = true
+5:0/1/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 8, 8, 0, 8, 8)
+5:0/2 = 2
+5:0/2/flip_v = true
+5:0/2/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 0, -8, -8, 8, -8)
+5:0/3 = 3
+5:0/3/flip_h = true
+5:0/3/flip_v = true
+5:0/3/physics_layer_0/polygon_0/points = PackedVector2Array(8, 0, -8, -8, 8, -8)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ay5qi"]
+texture = ExtResource("2_02qt5")
+0:0/next_alternative_id = 4
+0:0/0 = 0
+0:0/1 = 1
+0:0/1/transpose = true
+0:0/2 = 2
+0:0/2/flip_h = true
+0:0/2/flip_v = true
+0:0/2/transpose = true
+0:0/3 = 3
+0:0/3/flip_v = true
+0:1/next_alternative_id = 4
+0:1/0 = 0
+0:1/1 = 1
+0:1/1/flip_v = true
+0:1/2 = 2
+0:1/2/flip_h = true
+0:1/2/flip_v = true
+0:1/3 = 3
+0:1/3/flip_h = true
+0:2/next_alternative_id = 4
+0:2/0 = 0
+0:2/1 = 1
+0:2/1/flip_v = true
+0:2/2 = 2
+0:2/2/flip_h = true
+0:2/3 = 3
+0:2/3/flip_h = true
+0:2/3/flip_v = true
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1jf0b"]
+texture = ExtResource("3_42xb3")
+texture_region_size = Vector2i(32, 32)
+0:0/next_alternative_id = 4
+0:0/0 = 0
+0:0/1 = 1
+0:0/1/flip_v = true
+0:0/2 = 2
+0:0/2/transpose = true
+0:0/3 = 3
+0:0/3/flip_h = true
+0:0/3/transpose = true
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1lobv"]
+texture = ExtResource("4_qgc2o")
+texture_region_size = Vector2i(32, 32)
+0:0/next_alternative_id = 4
+0:0/0 = 0
+0:0/1 = 1
+0:0/1/flip_h = true
+0:0/2 = 2
+0:0/2/flip_v = true
+0:0/3 = 3
+0:0/3/flip_h = true
+0:0/3/flip_v = true
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8qn2y"]
+texture = ExtResource("5_e67g8")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+
+[resource]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_rf6l5")
+sources/1 = SubResource("TileSetAtlasSource_ay5qi")
+sources/2 = SubResource("TileSetAtlasSource_1jf0b")
+sources/3 = SubResource("TileSetAtlasSource_1lobv")
+sources/4 = SubResource("TileSetAtlasSource_8qn2y")
+pattern_0 = SubResource("TileMapPattern_66x82")
+pattern_1 = SubResource("TileMapPattern_prper")
+pattern_2 = SubResource("TileMapPattern_b1mfr")

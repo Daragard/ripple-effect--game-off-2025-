@@ -1,10 +1,10 @@
 class_name Player
 extends CharacterBody2D
 
-@export var SPEED : float = 400.0
-@export var ACCELERATION : float = 1200.0
-@export var DECELERATION : float = 1800.0
-@export var JUMP_VELOCITY : float = -800.0
+@export var SPEED : float = 500.0
+@export var ACCELERATION : float = 500.0
+@export var DECELERATION : float = 1200.0
+@export var JUMP_VELOCITY : float = -400.0
 @export var WALL_JUMP_LEAP : float = 400.0
 
 @export var STATE_MACHINE : StateMachine

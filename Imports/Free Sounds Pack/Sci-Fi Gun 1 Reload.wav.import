@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c0c0cwhbcf5bo"
+path="res://.godot/imported/Sci-Fi Gun 1 Reload.wav-407c64d3390090dde1896c4ec45b638a.sample"
+
+[deps]
+
+source_file="res://Imports/Free Sounds Pack/Sci-Fi Gun 1 Reload.wav"
+dest_files=["res://.godot/imported/Sci-Fi Gun 1 Reload.wav-407c64d3390090dde1896c4ec45b638a.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
