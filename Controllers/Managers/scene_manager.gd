@@ -69,10 +69,10 @@ func load_levels_from_folder():
 					var level_num = parts[1].to_int()
 					
 					# 2. Add validation: Numbers must be greater than zero for 1-based indexing
-					if world_num > 0 and level_num > 0:
+					if world_num >= 0 and level_num > 0:
 						# Convert to 0-based index
-						var world_index = world_num - 1
-						var level_index = level_num - 1 
+						var world_index = world_num
+						var level_index = level_num - 1
 						var full_path = LEVELS_FOLDER + file_name
 						
 						# Ensure the outer levels array is big enough
@@ -107,6 +107,11 @@ func load_levels_from_folder():
 
 
 # --- Level Loading Functions ---
+
+func set_internal_world_level(world : int, level : int):
+	print("setting internal world:level " + str(world) + ":" + str(level))
+	current_world_index = world
+	current_level_index = level - 1 # To make it start at zero
 
 ## Helper function to perform the scene change.
 func _change_scene(path: String):
@@ -151,7 +156,7 @@ func restart_level():
 		if level_path: # Ensure the slot isn't null (due to sparse indexing)
 			_change_scene(level_path)
 		else:
-			print("Error: Level path is null at W" + str(current_world_index + 1) + " L" + str(current_level_index + 1) + ". Check file naming.")
+			print("Error: Level path is null at W" + str(current_world_index) + " L" + str(current_level_index) + ". Check file naming.")
 	else:
 		print("Error: Current level index out of bounds.")
 
@@ -178,7 +183,7 @@ func next_level():
 		restart_level() # Calls the renamed function
 	else:
 		# Last level of the world completed (since we are on the current world)
-		print("WORLD " + str(current_world_index + 1) + " COMPLETED!")
+		print("WORLD " + str(current_world_index) + " COMPLETED!")
 		# Note: We do NOT increment current_world_index, following your requirement.
 
 ## Attempts to load the previous level in the current world.

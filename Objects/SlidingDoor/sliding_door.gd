@@ -1,5 +1,6 @@
 extends Area2D
 
+@export var NON_LEVEL_SCENE : PackedScene
 @export var LOAD_NEXT_WORLD : bool = false
 @onready var ANIMATED_SPRITE : AnimatedSprite2D = $AnimatedSprite2D
 @onready var sound_effect_timer: Timer = $SoundEffectTimer
@@ -11,7 +12,10 @@ var player : Player
 func _input(event: InputEvent) -> void:
 	if event.get_action_strength("up") > 0.75 and door_open:
 		if player.is_on_floor():
-			print("trying to load the next level")
+			if NON_LEVEL_SCENE:
+				get_tree().change_scene_to_file.call_deferred(NON_LEVEL_SCENE.resource_path)
+				return
+
 			if LOAD_NEXT_WORLD:
 				SceneManager.next_world()
 			else:

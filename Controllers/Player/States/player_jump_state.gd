@@ -3,9 +3,12 @@ extends PlayerMovementState
 
 @export var CORNER_SHIFT : WallCollisions
 
+var killed_jump : bool  = false
+
 func enter(previous_state_name : String) -> void:
 	PLAYER.velocity.y += PLAYER.JUMP_VELOCITY
 	ANIMATED_SPRITE.play("jump")
+	killed_jump = false
 
 func update(delta: float) -> void:
 	PLAYER.update_gravity(delta)
@@ -28,8 +31,9 @@ func check_transitions():
 		transition.emit("PlayerFallState")
 	
 	# Cut jump short for dynamic jump height
-	elif Input.is_action_just_released("jump") and PLAYER.velocity.y < 0:
+	elif !Input.is_action_pressed("jump") and PLAYER.velocity.y < 0 and !killed_jump:
 		PLAYER.velocity.y = 0
+		killed_jump = true
 	
 	elif PLAYER.is_on_floor():
 		ANIMATED_SPRITE.play("land")

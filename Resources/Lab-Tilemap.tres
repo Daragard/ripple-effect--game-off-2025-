@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=14 format=3 uid="uid://s4n3jdaupig5"]
+[gd_resource type="TileSet" load_steps=16 format=3 uid="uid://s4n3jdaupig5"]
 
 [ext_resource type="Texture2D" uid="uid://bitr33dgl8e4a" path="res://Resources/Art/LabFlooring.png" id="1_oab1w"]
 [ext_resource type="Texture2D" uid="uid://d3lft4t8og4ct" path="res://Resources/Art/Spikes.png" id="2_02qt5"]
@@ -14,6 +14,12 @@ tile_data = PackedInt32Array(0, 327680, 65536, 1, 262144, 65536)
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_b1mfr"]
 tile_data = PackedInt32Array(0, 262144, 131072, 1, 327680, 131072)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_oab1w"]
+tile_data = PackedInt32Array(0, 327680, 196608, 1, 262144, 196608)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_02qt5"]
+tile_data = PackedInt32Array(131072, 2, 196608, 131075, 2, 196608, 131078, 2, 196608, 9, 3, 0)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rf6l5"]
 texture = ExtResource("1_oab1w")
@@ -135,3 +141,5 @@ sources/4 = SubResource("TileSetAtlasSource_8qn2y")
 pattern_0 = SubResource("TileMapPattern_66x82")
 pattern_1 = SubResource("TileMapPattern_prper")
 pattern_2 = SubResource("TileMapPattern_b1mfr")
+pattern_3 = SubResource("TileMapPattern_oab1w")
+pattern_4 = SubResource("TileMapPattern_02qt5")

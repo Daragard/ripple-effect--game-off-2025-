@@ -1,0 +1,128 @@
+[gd_scene load_steps=6 format=3 uid="uid://c0ygpapux171n"]
+
+[ext_resource type="Texture2D" uid="uid://cdjoedw22cyri" path="res://Resources/Art/Professor.png" id="1_f7yty"]
+[ext_resource type="Script" uid="uid://cgkpnm1vj2eia" path="res://Controllers/rigid_dialog_manager.gd" id="1_fpt62"]
+[ext_resource type="PackedScene" uid="uid://cd7o8og5o2qxs" path="res://Levels/0-1.tscn" id="2_6t8ad"]
+[ext_resource type="FontFile" uid="uid://dclkei0t1yj8f" path="res://Imports/depixel/DePixelBreit.ttf" id="2_l0ayw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fpt62"]
+bg_color = Color(0.8742, 0.90396, 0.93, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.6864, 0.75093335, 0.88, 1)
+
+[node name="Intro" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fpt62")
+raw_dialogue_text = "Welcome to [color=blue][wave amp=50.0 freq=5.0 connected=1]WAVE Technologies[/wave][/color]!
+---
+We are currently doing research on the properties of different [pulse freq=1.0 color=#ffffff40 ease=-2.0]waves[/pulse]. Fascinating things [pulse freq=1.0 color=#ffffff40 ease=-2.0]waves[/pulse]!
+---
+Some are made of [color=orange]particles[/color] while others can only be classified by the way that particles are moving.
+---
+[color=yellow]LIGHT[/color] is a photon which is also a [pulse freq=1.0 color=#ffffff40 ease=-2.0]wave[/pulse]. However, based on the frequency of the [pulse freq=1.0 color=#ffffff40 ease=-2.0]wave[/pulse], the effect that the [pulse freq=1.0 color=#ffffff40 ease=-2.0]wave[/pulse] has on its surroundings varies wildly.
+---
+[color=blue]SOUND[/color] has no particle at all but can be measured by the way that particles move in a [pulse freq=1.0 color=#ffffff40 ease=-2.0]wave-like[/pulse] pattern.
+---
+Even [color=purple]GRAVITY[/color] can be measured in the form of [pulse freq=1.0 color=#ffffff40 ease=-2.0]wave[/pulse]! These [pulse freq=1.0 color=#ffffff40 ease=-2.0]waves[/pulse] seem to be [color=orange=]warping the fabric of space-time[/color]!
+---
+Well, ladies and gentlemen... My fellow scientists and engineers at [color=blue][wave amp=50.0 freq=5.0 connected=1]WAVE Technologies[/wave][/color] have been working hard to revolutionize the way that we think about this fascinating subject.
+---
+I would like to introduce to you all to...
+---
+THE RADIAL! (Shift in music here to more light-hearted)
+---
+This fascinating device is able to produce a pushing [pulse freq=1.0 color=#ffffff40 ease=-2.0]wave[/pulse] when configured as a [color=green]green[/color] RADIAL and a pulling [pulse freq=1.0 color=#ffffff40 ease=-2.0]wave[/pulse] when in it's [color=red]red[/color] setting.
+---
+The subtle shift in it's internal settings is remarkably similar to the way real [pulse freq=1.0 color=#ffffff40 ease=-2.0]waves[/pulse] work. Look at a pulling [pulse freq=1.0 color=#ffffff40 ease=-2.0]wave[/pulse] from a different angle and it suddenly becomes a pushing [pulse freq=1.0 color=#ffffff40 ease=-2.0]wave[/pulse].
+---
+Well, we are putting the call out there for anyone brave enough to test these new devices. Stand with us at the forefront of innovation and be a part of cutting edge [pulse freq=1.0 color=#ffffff40 ease=-2.0]wave[/pulse] research!
+---
+...
+---
+What was that? Someone is already here!! (Shift the music again to more fast paced)
+---
+I cannot thank you enough for volunteering so quickly!
+---
+Your goal is to reach the end of each of the testing chambers in the [color=orange]fastest time possible[/color]. We want to see how efficient these RADIALS can be.
+---
+Before we start letting you have some fun with the new tech, you will need to prove that you are [color=orange]physically capable[/color] of completing each room.
+---
+For that purpose, we will be making you do a series of rooms that require only your own physical prowess to complete.
+---
+Good luck!"
+next_scene = ExtResource("2_6t8ad")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = -27.0
+offset_top = -12.0
+offset_right = 1168.0
+offset_bottom = 643.0
+color = Color(0.8556176, 0.9070155, 0.9992692, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(556, 300)
+scale = Vector2(2, 2)
+texture = ExtResource("1_f7yty")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Panel" type="Panel" parent="MarginContainer"]
+custom_minimum_size = Vector2(0, 188.045)
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_styles/panel = SubResource("StyleBoxFlat_fpt62")
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 20
+
+[node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer2"]
+visible = false
+texture_filter = 2
+custom_minimum_size = Vector2(1032, 148)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0, 0.13999994, 0.35, 1)
+theme_override_fonts/font = ExtResource("2_l0ayw")
+theme_override_font_sizes/font_size = 30
+text = "This is some text that the professor is saying"
+autowrap_mode = 3
+clip_text = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/Panel/MarginContainer2"]
+clip_contents = false
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0.14117648, 0.34901962, 1)
+theme_override_fonts/normal_font = ExtResource("2_l0ayw")
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "This is some text that the professor is saying"
+
+[node name="TypingTimer" type="Timer" parent="."]
