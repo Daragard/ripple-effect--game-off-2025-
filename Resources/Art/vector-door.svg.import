@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cmij0jvakf67m"
-path="res://.godot/imported/Vaporwave-tiles.png-91fa3633989d04f1cb76585f8b3c4438.ctex"
+uid="uid://dxcj035fmwktc"
+path="res://.godot/imported/vector-door.svg-1b74a7ad4e0b11c8f17819bb4e8ffa20.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/Art/Vaporwave-tiles.png"
-dest_files=["res://.godot/imported/Vaporwave-tiles.png-91fa3633989d04f1cb76585f8b3c4438.ctex"]
+source_file="res://Resources/Art/vector-door.svg"
+dest_files=["res://.godot/imported/vector-door.svg-1b74a7ad4e0b11c8f17819bb4e8ffa20.ctex"]
 
 [params]
 
@@ -38,3 +38,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false

@@ -1,6 +1,7 @@
 class_name Player
 extends CharacterBody2D
 
+@export var BIG_PLAYER : bool = false
 @export var SPEED : float = 500.0
 @export var ACCELERATION : float = 500.0
 @export var DECELERATION : float = 1200.0
@@ -11,6 +12,10 @@ extends CharacterBody2D
 @export var ANIMATED_SPRITE : AnimatedSprite2D
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
+
+func _ready() -> void:
+	if BIG_PLAYER:
+		gravity *= 7.5
 
 func update_gravity(delta) -> void:
 	if !is_on_floor():

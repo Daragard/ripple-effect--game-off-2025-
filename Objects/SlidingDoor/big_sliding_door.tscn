@@ -1,0 +1,135 @@
+[gd_scene load_steps=19 format=3 uid="uid://barecxey35xas"]
+
+[ext_resource type="Script" uid="uid://de4iqvnhluaqe" path="res://Objects/SlidingDoor/sliding_door.gd" id="1_w0lqb"]
+[ext_resource type="Texture2D" uid="uid://cu1ajmegtq6u0" path="res://Resources/Art/vector-door.png" id="2_w0lqb"]
+[ext_resource type="AudioStream" uid="uid://cqc5afm73e3l1" path="res://Imports/Free Sounds Pack/Cash Register 1-2.wav" id="3_baj51"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kg7jg"]
+atlas = ExtResource("2_w0lqb")
+region = Rect2(1242, 0, 207, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0qgxt"]
+atlas = ExtResource("2_w0lqb")
+region = Rect2(1035, 0, 207, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_po4vv"]
+atlas = ExtResource("2_w0lqb")
+region = Rect2(828, 0, 207, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5g0cl"]
+atlas = ExtResource("2_w0lqb")
+region = Rect2(621, 0, 207, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hq1h3"]
+atlas = ExtResource("2_w0lqb")
+region = Rect2(414, 0, 207, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2k7sk"]
+atlas = ExtResource("2_w0lqb")
+region = Rect2(207, 0, 207, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_frvux"]
+atlas = ExtResource("2_w0lqb")
+region = Rect2(0, 0, 207, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w0lqb"]
+atlas = ExtResource("2_w0lqb")
+region = Rect2(0, 0, 207, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_svgj3"]
+atlas = ExtResource("2_w0lqb")
+region = Rect2(207, 0, 207, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_baj51"]
+atlas = ExtResource("2_w0lqb")
+region = Rect2(621, 0, 207, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ttrma"]
+atlas = ExtResource("2_w0lqb")
+region = Rect2(828, 0, 207, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jxy5x"]
+atlas = ExtResource("2_w0lqb")
+region = Rect2(1035, 0, 207, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_00r81"]
+atlas = ExtResource("2_w0lqb")
+region = Rect2(1242, 0, 207, 360)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_svgj3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kg7jg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0qgxt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_po4vv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5g0cl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hq1h3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2k7sk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_frvux")
+}],
+"loop": false,
+"name": &"close",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w0lqb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_svgj3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_baj51")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ttrma")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jxy5x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_00r81")
+}],
+"loop": false,
+"name": &"open",
+"speed": 20.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xiyhu"]
+size = Vector2(139, 242)
+
+[node name="SlidingDoor" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_w0lqb")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -180)
+sprite_frames = SubResource("SpriteFrames_svgj3")
+animation = &"open"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, -121)
+shape = SubResource("RectangleShape2D_xiyhu")
+
+[node name="SoundEffectTimer" type="Timer" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_baj51")
+volume_db = -15.0
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

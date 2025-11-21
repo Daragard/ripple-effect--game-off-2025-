@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://qm7aveja23ru"]
+
+[ext_resource type="Script" uid="uid://c7x7j3djgw0n7" path="res://Objects/HideableWall/hideable_wall.gd" id="1_djm3x"]
+[ext_resource type="Texture2D" uid="uid://cmij0jvakf67m" path="res://Resources/Art/Vaporwave-tiles.png" id="2_djm3x"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tsmn6"]
+atlas = ExtResource("2_djm3x")
+region = Rect2(0, 0, 120, 120)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nriwb"]
+size = Vector2(240, 240)
+
+[node name="HideableWall" type="Node2D"]
+script = ExtResource("1_djm3x")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0, 0.83137256, 1, 1)
+position = Vector2(-60, -60)
+texture = SubResource("AtlasTexture_tsmn6")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+modulate = Color(0, 0.83137256, 1, 1)
+position = Vector2(60, -60)
+texture = SubResource("AtlasTexture_tsmn6")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+modulate = Color(0, 0.83137256, 1, 1)
+position = Vector2(-60, 60)
+texture = SubResource("AtlasTexture_tsmn6")
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+modulate = Color(0, 0.83137256, 1, 1)
+position = Vector2(60, 60)
+texture = SubResource("AtlasTexture_tsmn6")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_nriwb")

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="The Ripple Effect (Game Off 2025)"
-run/main_scene="uid://c0ygpapux171n"
+run/main_scene="uid://cd7o8og5o2qxs"
 config/features=PackedStringArray("4.5", "Mobile")
 config/icon="res://icon.svg"
 
@@ -21,7 +21,7 @@ SceneManager="*res://Controllers/Managers/scene_manager.gd"
 
 [display]
 
-window/size/viewport_height=640
+window/size/viewport_height=624
 window/size/mode=2
 window/stretch/mode="viewport"
 
@@ -120,3 +120,4 @@ debug_prev_world={
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="mobile"
 textures/vram_compression/import_etc2_astc=true
+environment/defaults/default_clear_color=Color(0.05000019, 0, 1, 1)

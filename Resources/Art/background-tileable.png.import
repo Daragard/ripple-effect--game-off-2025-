@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cmij0jvakf67m"
-path="res://.godot/imported/Vaporwave-tiles.png-91fa3633989d04f1cb76585f8b3c4438.ctex"
+uid="uid://boyhxqkm8r4x0"
+path="res://.godot/imported/background-tileable.png-41b20a70547fe69083e285bd8eba4568.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/Art/Vaporwave-tiles.png"
-dest_files=["res://.godot/imported/Vaporwave-tiles.png-91fa3633989d04f1cb76585f8b3c4438.ctex"]
+source_file="res://Resources/Art/background-tileable.png"
+dest_files=["res://.godot/imported/background-tileable.png-41b20a70547fe69083e285bd8eba4568.ctex"]
 
 [params]
 

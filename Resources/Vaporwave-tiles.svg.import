@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cmij0jvakf67m"
-path="res://.godot/imported/Vaporwave-tiles.png-91fa3633989d04f1cb76585f8b3c4438.ctex"
+uid="uid://eni55r880fn4"
+path="res://.godot/imported/Vaporwave-tiles.svg-02bc61d0dfc91c84a0634df70a0bf1b2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/Art/Vaporwave-tiles.png"
-dest_files=["res://.godot/imported/Vaporwave-tiles.png-91fa3633989d04f1cb76585f8b3c4438.ctex"]
+source_file="res://Resources/Vaporwave-tiles.svg"
+dest_files=["res://.godot/imported/Vaporwave-tiles.svg-02bc61d0dfc91c84a0634df70a0bf1b2.ctex"]
 
 [params]
 
@@ -38,3 +38,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false
