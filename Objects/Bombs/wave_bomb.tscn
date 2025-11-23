@@ -1,6 +1,6 @@
 [gd_scene load_steps=31 format=3 uid="uid://gwt73yfk8k78"]
 
-[ext_resource type="Script" uid="uid://chbjnk1plxn7y" path="res://Controllers/Bombs/wave_bomb.gd" id="1_kc201"]
+[ext_resource type="Script" uid="uid://chbjnk1plxn7y" path="res://Objects/Bombs/wave_bomb.gd" id="1_kc201"]
 [ext_resource type="Texture2D" uid="uid://ca83n70v8prhp" path="res://Imports/Super Package Retro Pixel Effects 32x32 pack 2 Free/16.png" id="2_gj3b4"]
 [ext_resource type="Texture2D" uid="uid://5aoqt0w42d1a" path="res://Resources/Art/Wave Bomb.png" id="3_61h8f"]
 [ext_resource type="Texture2D" uid="uid://cbf32jxmcl0da" path="res://Imports/Super Package Retro Pixel Effects 32x32 pack 2 Free/20.png" id="5_mcfqu"]

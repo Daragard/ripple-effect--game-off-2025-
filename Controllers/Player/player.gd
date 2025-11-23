@@ -67,3 +67,6 @@ func get_input_direction():
 		return -1
 	else: 
 		return 0
+#
+#func exploded_player():
+	#STATE_MACHINE.on_child_transition()

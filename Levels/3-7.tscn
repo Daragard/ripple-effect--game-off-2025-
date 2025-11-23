@@ -7,8 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://db3su6jf3x2ij" path="res://Objects/SlidingDoor/sliding_door.tscn" id="5_w2r3m"]
 [ext_resource type="Script" uid="uid://qfn3s54awla2" path="res://Objects/HideableWall/broadcast_signal.gd" id="6_4k5i8"]
 [ext_resource type="PackedScene" uid="uid://blbidxlk5s4nh" path="res://Objects/HideableWall/hideable_wall.tscn" id="6_atlrd"]
-[ext_resource type="PackedScene" uid="uid://da2hl7yf6ehd3" path="res://Controllers/Bombs/attraction_bomb.tscn" id="8_tbl0o"]
-[ext_resource type="PackedScene" uid="uid://gwt73yfk8k78" path="res://Controllers/Bombs/wave_bomb.tscn" id="9_ynibb"]
+[ext_resource type="PackedScene" uid="uid://da2hl7yf6ehd3" path="res://Objects/Bombs/attraction_bomb.tscn" id="8_tbl0o"]
+[ext_resource type="PackedScene" uid="uid://gwt73yfk8k78" path="res://Objects/Bombs/wave_bomb.tscn" id="9_ynibb"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_syshm"]
 

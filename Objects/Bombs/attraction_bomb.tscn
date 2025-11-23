@@ -1,6 +1,6 @@
 [gd_scene load_steps=31 format=3 uid="uid://da2hl7yf6ehd3"]
 
-[ext_resource type="Script" uid="uid://chbjnk1plxn7y" path="res://Controllers/Bombs/wave_bomb.gd" id="1_vbuhl"]
+[ext_resource type="Script" uid="uid://chbjnk1plxn7y" path="res://Objects/Bombs/wave_bomb.gd" id="1_vbuhl"]
 [ext_resource type="Texture2D" uid="uid://bd00nebrmdq2l" path="res://Resources/Art/Attraction Bomb.png" id="2_t71qi"]
 [ext_resource type="Texture2D" uid="uid://o8hgjtw2lum3" path="res://Imports/Super Package Retro Pixel Effects 32x32 pack 2 Free/03.png" id="3_t71qi"]
 [ext_resource type="Texture2D" uid="uid://cp37tvukldcs5" path="res://Imports/Super Package Retro Pixel Effects 32x32 pack 2 Free/01.png" id="4_vbuhl"]
@@ -193,7 +193,6 @@ radius = 103.02
 top_level = true
 script = ExtResource("1_vbuhl")
 ATTRACTION_BOMB = true
-EXPLOSION_FORCE = 1000
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(3, 3)

@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://s3pr744pv3s7"]
 
 [ext_resource type="PackedScene" uid="uid://c5616dh1njf1e" path="res://Controllers/Player/player.tscn" id="1_78ud1"]
-[ext_resource type="PackedScene" uid="uid://gwt73yfk8k78" path="res://Controllers/Bombs/wave_bomb.tscn" id="2_0k33p"]
-[ext_resource type="PackedScene" uid="uid://da2hl7yf6ehd3" path="res://Controllers/Bombs/attraction_bomb.tscn" id="3_v30wv"]
+[ext_resource type="PackedScene" uid="uid://gwt73yfk8k78" path="res://Objects/Bombs/wave_bomb.tscn" id="2_0k33p"]
+[ext_resource type="PackedScene" uid="uid://da2hl7yf6ehd3" path="res://Objects/Bombs/attraction_bomb.tscn" id="3_v30wv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ouqpc"]
 size = Vector2(1875, 40)

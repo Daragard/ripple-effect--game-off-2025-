@@ -5,7 +5,7 @@
 [ext_resource type="TileSet" uid="uid://s4n3jdaupig5" path="res://Resources/Lab-Tilemap.tres" id="3_3deou"]
 [ext_resource type="PackedScene" uid="uid://c5oss2juierm0" path="res://Controllers/kill_zone.tscn" id="4_ytcbe"]
 [ext_resource type="PackedScene" uid="uid://db3su6jf3x2ij" path="res://Objects/SlidingDoor/sliding_door.tscn" id="5_52ad1"]
-[ext_resource type="PackedScene" uid="uid://gwt73yfk8k78" path="res://Controllers/Bombs/wave_bomb.tscn" id="6_16c64"]
+[ext_resource type="PackedScene" uid="uid://gwt73yfk8k78" path="res://Objects/Bombs/wave_bomb.tscn" id="6_16c64"]
 [ext_resource type="PackedScene" uid="uid://teup0ngodepu" path="res://Objects/Rope/rope.tscn" id="7_bov2p"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_syshm"]
