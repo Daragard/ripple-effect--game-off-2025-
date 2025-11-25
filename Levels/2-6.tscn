@@ -1,9 +1,10 @@
-[gd_scene load_steps=25 format=4 uid="uid://joqkyoqgd88t"]
+[gd_scene load_steps=26 format=4 uid="uid://joqkyoqgd88t"]
 
 [ext_resource type="TileSet" uid="uid://dejt6hycl6n65" path="res://Resources/Vaporwave-Tilemap.tres" id="1_k0gfq"]
 [ext_resource type="PackedScene" uid="uid://c4v7o6x5hxsed" path="res://Controllers/Player/player-big.tscn" id="2_klleq"]
 [ext_resource type="PackedScene" uid="uid://c5oss2juierm0" path="res://Controllers/kill_zone.tscn" id="3_kwwoa"]
 [ext_resource type="PackedScene" uid="uid://barecxey35xas" path="res://Objects/SlidingDoor/big_sliding_door.tscn" id="4_xdy2d"]
+[ext_resource type="PackedScene" uid="uid://dkrb75sevghun" path="res://Controllers/Managers/Credits/credits.tscn" id="5_sp81w"]
 [ext_resource type="PackedScene" uid="uid://clfdh3nmiyar8" path="res://Objects/Bombs/big_attraction_bomb.tscn" id="5_xshhj"]
 [ext_resource type="PackedScene" uid="uid://babl7en2jab02" path="res://Objects/Bombs/big_explosion_bomb.tscn" id="6_lk4ln"]
 [ext_resource type="Script" uid="uid://qfn3s54awla2" path="res://Objects/HideableWall/broadcast_signal.gd" id="8_xdy2d"]
@@ -115,6 +116,7 @@ shape = SubResource("RectangleShape2D_jagug")
 
 [node name="SlidingDoor" parent="." instance=ExtResource("4_xdy2d")]
 position = Vector2(20280, -479)
+NON_LEVEL_SCENE = ExtResource("5_sp81w")
 
 [node name="Attraction_Bomb" parent="." instance=ExtResource("5_xshhj")]
 position = Vector2(5227, -3428)
