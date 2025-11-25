@@ -20,6 +20,8 @@ var is_changing_scene: bool = false
 
 # --- Initialization ---
 
+var is_debug: bool = false
+
 func _ready() -> void:
 	# 1. Load all levels into the array structure
 	load_levels_from_folder()
@@ -34,16 +36,16 @@ func _ready() -> void:
 	#    restart_level()
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("debug_next_level"):
+	if event.is_action_pressed("debug_next_level") and is_debug:
 		print("DEBUG: Next Level")
 		next_level()
-	elif event.is_action_pressed("debug_prev_level"):
+	elif event.is_action_pressed("debug_prev_level") and is_debug:
 		print("DEBUG: Previous Level")
 		previous_level()
-	elif event.is_action_pressed("debug_next_world"):
+	elif event.is_action_pressed("debug_next_world") and is_debug:
 		print("DEBUG: Next World")
 		next_world()
-	elif event.is_action_pressed("debug_prev_world"):
+	elif event.is_action_pressed("debug_prev_world") and is_debug:
 		print("DEBUG: Previous World")
 		previous_world()
 

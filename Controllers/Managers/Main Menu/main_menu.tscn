@@ -1,0 +1,218 @@
+[gd_scene load_steps=18 format=3 uid="uid://bafvlxa863wtv"]
+
+[ext_resource type="Texture2D" uid="uid://boyhxqkm8r4x0" path="res://Resources/Art/background-tileable.png" id="1_5bbvn"]
+[ext_resource type="Script" uid="uid://blaogr7lxich5" path="res://Controllers/Managers/Main Menu/main_menu.gd" id="1_acuck"]
+[ext_resource type="FontFile" uid="uid://of04w1utycqm" path="res://Imports/Oswald-VariableFont_wght.ttf" id="1_femld"]
+[ext_resource type="PackedScene" uid="uid://cfhp0wp4dc16f" path="res://Resources/Art/Green_Bomb.glb" id="1_sopxj"]
+[ext_resource type="Script" uid="uid://cpe8wnxypaxl5" path="res://Controllers/Managers/Main Menu/grab_focus.gd" id="2_5bbvn"]
+[ext_resource type="Script" uid="uid://b03gqhl3t41i2" path="res://Controllers/Managers/Main Menu/main_menu_bomb.gd" id="2_ukv7s"]
+[ext_resource type="PackedScene" uid="uid://bwp4w4wckawn" path="res://Resources/Art/Orange_Bomb.glb" id="5_5bbvn"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sopxj"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_jki2h"]
+sky_material = SubResource("ProceduralSkyMaterial_sopxj")
+
+[sub_resource type="Environment" id="Environment_femld"]
+background_mode = 1
+background_color = Color(0.048162833, 0.024220886, 0.5564546, 1)
+sky = SubResource("Sky_jki2h")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3blup"]
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_femld"]
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2slu7"]
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ukv7s"]
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5bbvn"]
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_acuck"]
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jki2h"]
+draw_center = false
+
+[node name="MainMenu" type="Node3D"]
+script = ExtResource("1_acuck")
+main_game_scene_path = "res://Levels/0-1.tscn"
+level_select_scene_path = "res://Controllers/Managers/Level Select/level_select.tscn"
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_femld")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_5bbvn")
+stretch_mode = 1
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 50.0
+offset_right = 400.0
+offset_bottom = 256.0
+theme_override_colors/font_color = Color(1, 0.7666667, 0, 1)
+theme_override_constants/line_spacing = -34
+theme_override_fonts/font = ExtResource("1_femld")
+theme_override_font_sizes/font_size = 80
+text = "MAXIMUM
+VELOCITY"
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 100.0
+offset_top = -290.0
+offset_right = 312.0
+grow_vertical = 0
+size_flags_vertical = 3
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_bottom = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_constants/separation = 20
+
+[node name="Start-Continue" type="Button" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+focus_neighbor_bottom = NodePath("../LevelSelect")
+focus_next = NodePath("../LevelSelect")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 0.76862746, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.7137255, 0.54509807, 0, 1)
+theme_override_colors/font_hover_color = Color(0.82937205, 0.63541985, 1.92523e-06, 1)
+theme_override_fonts/font = ExtResource("1_femld")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_3blup")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_femld")
+theme_override_styles/hover = SubResource("StyleBoxFlat_2slu7")
+theme_override_styles/focus = SubResource("StyleBoxFlat_ukv7s")
+text = "- Start -"
+alignment = 0
+script = ExtResource("2_5bbvn")
+
+[node name="LevelSelect" type="Button" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Start-Continue")
+focus_neighbor_bottom = NodePath("../Settings")
+focus_next = NodePath("../Settings")
+focus_previous = NodePath("../Start-Continue")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 0.76862746, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.7137255, 0.54509807, 0, 1)
+theme_override_colors/font_hover_color = Color(0.827451, 0.63529414, 0, 1)
+theme_override_fonts/font = ExtResource("1_femld")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_3blup")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_femld")
+theme_override_styles/hover = SubResource("StyleBoxFlat_2slu7")
+theme_override_styles/focus = SubResource("StyleBoxFlat_5bbvn")
+text = "- Level Select -"
+alignment = 0
+
+[node name="Settings" type="Button" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../LevelSelect")
+focus_neighbor_bottom = NodePath("../Quit")
+focus_next = NodePath("../Quit")
+focus_previous = NodePath("../LevelSelect")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 0.76862746, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.7137255, 0.54509807, 0, 1)
+theme_override_colors/font_hover_color = Color(0.82937205, 0.63541985, 1.92523e-06, 1)
+theme_override_fonts/font = ExtResource("1_femld")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_3blup")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_femld")
+theme_override_styles/hover = SubResource("StyleBoxFlat_2slu7")
+theme_override_styles/focus = SubResource("StyleBoxFlat_acuck")
+text = "- Settings -"
+alignment = 0
+
+[node name="Quit" type="Button" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Settings")
+focus_previous = NodePath("../Settings")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 0.76862746, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.7137255, 0.54509807, 0, 1)
+theme_override_colors/font_hover_color = Color(0.827451, 0.63529414, 0, 1)
+theme_override_fonts/font = ExtResource("1_femld")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_3blup")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_femld")
+theme_override_styles/hover = SubResource("StyleBoxFlat_2slu7")
+theme_override_styles/focus = SubResource("StyleBoxFlat_jki2h")
+text = "- Quit -"
+alignment = 0
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+
+[node name="Bomb" type="Node3D" parent="." node_paths=PackedStringArray("green_mesh_node", "orange_mesh_node", "scene_light")]
+transform = Transform3D(0.3835198, 0.055038016, -0.496773, 0, 0.6261687, 0.06937392, 0.4998125, -0.042232174, 0.38118753, -2.772, -0.38, 3.957)
+script = ExtResource("2_ukv7s")
+green_mesh_node = NodePath("GreenBomb")
+orange_mesh_node = NodePath("Orange_Bomb")
+scene_light = NodePath("OmniLight3D")
+green_light_color = Color(0.2509804, 1, 0.6156863, 1)
+
+[node name="GreenBomb" parent="Bomb" instance=ExtResource("1_sopxj")]
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Orange_Bomb" parent="Bomb" instance=ExtResource("5_5bbvn")]
+visible = false
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Bomb"]
+transform = Transform3D(1.5873015, 0, 0, 0, 1.5873015, 0, 0, 0, 1.5873015, 0, 0, 0)
+light_color = Color(0.2509804, 1, 0.6156863, 1)
+
+[node name="Background" type="Node3D" parent="."]
+
+[node name="Sprite3D" type="Sprite3D" parent="Background"]
+transform = Transform3D(1.425, 0, 0, 0, 1.425, 0, 0, 0, 1.425, 4.5, -0.275, 5.614)
+texture = ExtResource("1_5bbvn")
+
+[node name="Sprite3D2" type="Sprite3D" parent="Background"]
+transform = Transform3D(1.425, 0, 0, 0, 1.425, 0, 0, 0, 1.425, -4.5, -0.275, 5.614)
+texture = ExtResource("1_5bbvn")
+
+[connection signal="button_up" from="Control/MarginContainer/VBoxContainer/Start-Continue" to="." method="_on_start_button_pressed"]
+[connection signal="button_up" from="Control/MarginContainer/VBoxContainer/LevelSelect" to="." method="_on_level_select_button_pressed"]
+[connection signal="button_up" from="Control/MarginContainer/VBoxContainer/Settings" to="." method="_on_settings_button_pressed"]
+[connection signal="button_up" from="Control/MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_button_pressed"]

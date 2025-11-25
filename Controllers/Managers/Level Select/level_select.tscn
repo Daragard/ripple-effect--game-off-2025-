@@ -1,0 +1,386 @@
+[gd_scene load_steps=16 format=3 uid="uid://dbdstamokfggh"]
+
+[ext_resource type="Script" uid="uid://bejm4lygfx714" path="res://Controllers/Managers/Level Select/level_select.gd" id="1_1ewo4"]
+[ext_resource type="Texture2D" uid="uid://boyhxqkm8r4x0" path="res://Resources/Art/background-tileable.png" id="1_8wqut"]
+[ext_resource type="FontFile" uid="uid://of04w1utycqm" path="res://Imports/Oswald-VariableFont_wght.ttf" id="2_tab0c"]
+[ext_resource type="StyleBox" uid="uid://be5ic0ketgy5e" path="res://Controllers/Managers/Level Select/normal-button.tres" id="3_7hc8y"]
+[ext_resource type="StyleBox" uid="uid://ldx36jppqf16" path="res://Controllers/Managers/Level Select/focus-button.tres" id="4_1gsrk"]
+[ext_resource type="Script" uid="uid://cpe8wnxypaxl5" path="res://Controllers/Managers/Main Menu/grab_focus.gd" id="5_1gsrk"]
+[ext_resource type="StyleBox" uid="uid://bcypmnexugt8b" path="res://Controllers/Managers/Level Select/disabled-button.tres" id="5_dbtm4"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7hc8y"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_3blup"]
+sky_material = SubResource("ProceduralSkyMaterial_7hc8y")
+
+[sub_resource type="Environment" id="Environment_1gsrk"]
+background_mode = 1
+background_color = Color(0.048162833, 0.024220886, 0.5564546, 1)
+sky = SubResource("Sky_3blup")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dbtm4"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1ewo4"]
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4nkfa"]
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4vamj"]
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6abt8"]
+draw_center = false
+
+[node name="LevelSelect" type="Node3D" node_paths=PackedStringArray("level_containers")]
+script = ExtResource("1_1ewo4")
+level_containers = [NodePath("Control/CenterContainer/HBoxContainer/World0/VBoxContainer/GridContainer"), NodePath("Control/CenterContainer/HBoxContainer/World1/VBoxContainer/GridContainer"), NodePath("Control/CenterContainer/HBoxContainer/World2/VBoxContainer/GridContainer")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_1gsrk")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+
+[node name="Background" type="Node3D" parent="."]
+
+[node name="Sprite3D" type="Sprite3D" parent="Background"]
+transform = Transform3D(1.425, 0, 0, 0, 1.425, 0, 0, 0, 1.425, 4.5, -0.275, 5.614)
+texture = ExtResource("1_8wqut")
+
+[node name="Sprite3D2" type="Sprite3D" parent="Background"]
+transform = Transform3D(1.425, 0, 0, 0, 1.425, 0, 0, 0, 1.425, -4.5, -0.275, 5.614)
+texture = ExtResource("1_8wqut")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/CenterContainer"]
+layout_mode = 2
+
+[node name="World0" type="Panel" parent="Control/CenterContainer/HBoxContainer"]
+custom_minimum_size = Vector2(300, 500)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_dbtm4")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/CenterContainer/HBoxContainer/World0"]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -102.0
+offset_right = 102.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Control/CenterContainer/HBoxContainer/World0/VBoxContainer"]
+custom_minimum_size = Vector2(204, 82)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_tab0c")
+theme_override_font_sizes/font_size = 50
+text = "World 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="Control/CenterContainer/HBoxContainer/World0/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+columns = 2
+
+[node name="Button" type="Button" parent="Control/CenterContainer/HBoxContainer/World0/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_tab0c")
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = ExtResource("3_7hc8y")
+theme_override_styles/hover = ExtResource("4_1gsrk")
+theme_override_styles/disabled = ExtResource("5_dbtm4")
+theme_override_styles/focus = ExtResource("4_1gsrk")
+text = "1"
+script = ExtResource("5_1gsrk")
+
+[node name="Button2" type="Button" parent="Control/CenterContainer/HBoxContainer/World0/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_tab0c")
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = ExtResource("3_7hc8y")
+theme_override_styles/hover = ExtResource("4_1gsrk")
+theme_override_styles/disabled = ExtResource("5_dbtm4")
+theme_override_styles/focus = ExtResource("4_1gsrk")
+text = "2"
+
+[node name="Button3" type="Button" parent="Control/CenterContainer/HBoxContainer/World0/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_tab0c")
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = ExtResource("3_7hc8y")
+theme_override_styles/hover = ExtResource("4_1gsrk")
+theme_override_styles/disabled = ExtResource("5_dbtm4")
+theme_override_styles/focus = ExtResource("4_1gsrk")
+text = "3"
+
+[node name="Button4" type="Button" parent="Control/CenterContainer/HBoxContainer/World0/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_tab0c")
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = ExtResource("3_7hc8y")
+theme_override_styles/hover = ExtResource("4_1gsrk")
+theme_override_styles/disabled = ExtResource("5_dbtm4")
+theme_override_styles/focus = ExtResource("4_1gsrk")
+text = "4"
+
+[node name="World1" type="Panel" parent="Control/CenterContainer/HBoxContainer"]
+custom_minimum_size = Vector2(300, 500)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_dbtm4")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/CenterContainer/HBoxContainer/World1"]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -102.0
+offset_right = 102.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Control/CenterContainer/HBoxContainer/World1/VBoxContainer"]
+custom_minimum_size = Vector2(204, 82)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_tab0c")
+theme_override_font_sizes/font_size = 50
+text = "World 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="Control/CenterContainer/HBoxContainer/World1/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+columns = 2
+
+[node name="Button" type="Button" parent="Control/CenterContainer/HBoxContainer/World1/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_tab0c")
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = ExtResource("3_7hc8y")
+theme_override_styles/hover = ExtResource("4_1gsrk")
+theme_override_styles/disabled = ExtResource("5_dbtm4")
+theme_override_styles/focus = ExtResource("4_1gsrk")
+text = "1"
+
+[node name="Button2" type="Button" parent="Control/CenterContainer/HBoxContainer/World1/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_tab0c")
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = ExtResource("3_7hc8y")
+theme_override_styles/hover = ExtResource("4_1gsrk")
+theme_override_styles/disabled = ExtResource("5_dbtm4")
+theme_override_styles/focus = ExtResource("4_1gsrk")
+text = "2"
+
+[node name="Button3" type="Button" parent="Control/CenterContainer/HBoxContainer/World1/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_tab0c")
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = ExtResource("3_7hc8y")
+theme_override_styles/hover = ExtResource("4_1gsrk")
+theme_override_styles/disabled = ExtResource("5_dbtm4")
+theme_override_styles/focus = ExtResource("4_1gsrk")
+text = "3"
+
+[node name="Button4" type="Button" parent="Control/CenterContainer/HBoxContainer/World1/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_tab0c")
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = ExtResource("3_7hc8y")
+theme_override_styles/hover = ExtResource("4_1gsrk")
+theme_override_styles/disabled = ExtResource("5_dbtm4")
+theme_override_styles/focus = ExtResource("4_1gsrk")
+text = "4"
+
+[node name="Button5" type="Button" parent="Control/CenterContainer/HBoxContainer/World1/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_tab0c")
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = ExtResource("3_7hc8y")
+theme_override_styles/hover = ExtResource("4_1gsrk")
+theme_override_styles/disabled = ExtResource("5_dbtm4")
+theme_override_styles/focus = ExtResource("4_1gsrk")
+text = "5"
+
+[node name="Button6" type="Button" parent="Control/CenterContainer/HBoxContainer/World1/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_tab0c")
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = ExtResource("3_7hc8y")
+theme_override_styles/hover = ExtResource("4_1gsrk")
+theme_override_styles/disabled = ExtResource("5_dbtm4")
+theme_override_styles/focus = ExtResource("4_1gsrk")
+text = "6"
+
+[node name="World2" type="Panel" parent="Control/CenterContainer/HBoxContainer"]
+custom_minimum_size = Vector2(300, 500)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_dbtm4")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/CenterContainer/HBoxContainer/World2"]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -102.0
+offset_right = 102.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Control/CenterContainer/HBoxContainer/World2/VBoxContainer"]
+custom_minimum_size = Vector2(204, 82)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_tab0c")
+theme_override_font_sizes/font_size = 50
+text = "World 2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="Control/CenterContainer/HBoxContainer/World2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+columns = 2
+
+[node name="Button" type="Button" parent="Control/CenterContainer/HBoxContainer/World2/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_tab0c")
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = ExtResource("3_7hc8y")
+theme_override_styles/hover = ExtResource("4_1gsrk")
+theme_override_styles/disabled = ExtResource("5_dbtm4")
+theme_override_styles/focus = ExtResource("4_1gsrk")
+text = "1"
+
+[node name="Button2" type="Button" parent="Control/CenterContainer/HBoxContainer/World2/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_tab0c")
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = ExtResource("3_7hc8y")
+theme_override_styles/hover = ExtResource("4_1gsrk")
+theme_override_styles/disabled = ExtResource("5_dbtm4")
+theme_override_styles/focus = ExtResource("4_1gsrk")
+text = "2"
+
+[node name="Button3" type="Button" parent="Control/CenterContainer/HBoxContainer/World2/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_tab0c")
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = ExtResource("3_7hc8y")
+theme_override_styles/hover = ExtResource("4_1gsrk")
+theme_override_styles/disabled = ExtResource("5_dbtm4")
+theme_override_styles/focus = ExtResource("4_1gsrk")
+text = "3"
+
+[node name="Button4" type="Button" parent="Control/CenterContainer/HBoxContainer/World2/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_tab0c")
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = ExtResource("3_7hc8y")
+theme_override_styles/hover = ExtResource("4_1gsrk")
+theme_override_styles/disabled = ExtResource("5_dbtm4")
+theme_override_styles/focus = ExtResource("4_1gsrk")
+text = "4"
+
+[node name="Button5" type="Button" parent="Control/CenterContainer/HBoxContainer/World2/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_tab0c")
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = ExtResource("3_7hc8y")
+theme_override_styles/hover = ExtResource("4_1gsrk")
+theme_override_styles/disabled = ExtResource("5_dbtm4")
+theme_override_styles/focus = ExtResource("4_1gsrk")
+text = "5"
+
+[node name="Button6" type="Button" parent="Control/CenterContainer/HBoxContainer/World2/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_tab0c")
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = ExtResource("3_7hc8y")
+theme_override_styles/hover = ExtResource("4_1gsrk")
+theme_override_styles/disabled = ExtResource("5_dbtm4")
+theme_override_styles/focus = ExtResource("4_1gsrk")
+text = "6"
+
+[node name="Back" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 50.0
+offset_top = -65.0
+offset_right = 137.0
+offset_bottom = -20.0
+grow_vertical = 0
+focus_neighbor_bottom = NodePath("../LevelSelect")
+focus_next = NodePath("../LevelSelect")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 0.76862746, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.7137255, 0.54509807, 0, 1)
+theme_override_colors/font_hover_color = Color(0.82937205, 0.63541985, 1.92523e-06, 1)
+theme_override_fonts/font = ExtResource("2_tab0c")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_1ewo4")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_4nkfa")
+theme_override_styles/hover = SubResource("StyleBoxFlat_4vamj")
+theme_override_styles/focus = SubResource("StyleBoxFlat_6abt8")
+text = "← Back"
+alignment = 0
+
+[connection signal="button_up" from="Control/Back" to="." method="go_back_to_main_menu"]
