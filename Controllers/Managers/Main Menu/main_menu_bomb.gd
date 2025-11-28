@@ -1,4 +1,3 @@
-@tool
 extends Node3D
 
 # --- [ Section 1: Mesh and Light Swap Variables ] ---

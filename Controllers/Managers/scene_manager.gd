@@ -9,9 +9,12 @@ var levels: Array = []
 # The folder where your level scenes are stored. Make sure this path is correct!
 const LEVELS_FOLDER: String = "res://Levels/" 
 
+const LEVEL_OVERVIEW_PATH: String = "res://Controllers/Managers/LevelOverview/level_overview.tscn"
+
 # Current position in the levels array (0-based indices)
 var current_world_index: int = 0
 var current_level_index: int = 0
+var current_completion_time: float = 0
 
 # --- Debounce/Lock Variable ---
 # New variable to prevent multiple scene changes in one frame or during a brief transition.
@@ -108,12 +111,88 @@ func load_levels_from_folder():
 		print("ERROR: Could not open the directory: " + LEVELS_FOLDER + ". Check your file structure.")
 
 
-# --- Level Loading Functions ---
+# --- Internal Index Manipulation Functions ---
+
+## Advances the internal level count.
+## - Goes to the first level of the next world if at the end of the current world.
+## - If on the last level of the last world, stays on the current level.
+func set_internal_next_level():
+	var next_level_index = current_level_index + 1
+	var current_world_levels: Array = []
+	
+	# 1. Basic safety check for the current world
+	if current_world_index < levels.size() and levels[current_world_index] != null:
+		current_world_levels = levels[current_world_index]
+	else:
+		# Should not happen if game is running correctly, but good for safety
+		print("ERROR: Current world index is invalid.")
+		return
+
+	# 2. Check if the next level is in the current world
+	if next_level_index < current_world_levels.size():
+		# The next level exists in the current world.
+		current_level_index = next_level_index
+		print("Internal state set to next level: W%d L%d" % [current_world_index, current_level_index])
+	else:
+		# Last level of the current world. Try to move to the next world.
+		var next_world_index = current_world_index + 1
+		
+		# 3. Check if the next world exists and has levels
+		if next_world_index < levels.size() and levels[next_world_index] != null and levels[next_world_index].size() > 0:
+			# Next world exists: Go to the first level (index 0)
+			current_world_index = next_world_index
+			current_level_index = 0
+			print("Internal state set to next world's first level: W%d L%d" % [current_world_index, current_level_index])
+		else:
+			# Last level of the last world: Stay on the current level.
+			print("Internal state remains on W%d L%d (Last level of all worlds)." % [current_world_index, current_level_index])
+
+
+## Retreats the internal level count (inverse of set_internal_next_level).
+## - Goes to the last level of the previous world if at the first level of the current world.
+## - If on the first level of the first world, stays on the current level.
+func set_internal_previous_level():
+	var previous_level_index = current_level_index - 1
+	
+	# 1. Check if the previous level is in the current world
+	if previous_level_index >= 0:
+		# The previous level exists in the current world.
+		current_level_index = previous_level_index
+		print("Internal state set to previous level: W%d L%d" % [current_world_index, current_level_index])
+	else:
+		# First level of the current world. Try to move to the previous world.
+		var previous_world_index = current_world_index - 1
+		
+		# 2. Check if the previous world exists
+		if previous_world_index >= 0:
+			# Safety check: ensure the previous world array exists and has levels
+			if levels[previous_world_index] != null and levels[previous_world_index].size() > 0:
+				# Previous world exists: Go to the LAST level of that world
+				current_world_index = previous_world_index
+				# Set level index to the LAST level of the new current world
+				current_level_index = levels[current_world_index].size() - 1 
+				print("Internal state set to previous world's last level: W%d L%d" % [current_world_index, current_level_index])
+			else:
+				# Should not happen in a valid setup
+				print("ERROR: Previous World %d exists but contains no levels. State remains unchanged." % [previous_world_index])
+		else:
+			# First level of the first world: Stay on the current level.
+			print("Internal state remains on W%d L%d (First level of first world)." % [current_world_index, current_level_index])
+
 
 func set_internal_world_level(world : int, level : int):
 	print("setting internal world:level " + str(world) + ":" + str(level))
 	current_world_index = world
 	current_level_index = level - 1 # To make it start at zero
+
+
+# --- Level Loading Functions ---
+
+func load_level_from_save():
+	current_world_index = SaveManager.data.current_world
+	current_level_index = SaveManager.data.current_level
+	print("loading level " + str(current_world_index) + "-" + str(current_level_index) + " from save")
+	restart_level()
 
 ## Helper function to perform the scene change.
 func _change_scene(path: String):
@@ -123,7 +202,6 @@ func _change_scene(path: String):
 	if FileAccess.file_exists(path):
 		# Godot will change the scene.
 		get_tree().change_scene_to_file.call_deferred(path)
-		print("Loading level: " + path)
 		
 		# --- FIX: Deferred Lock Release ---
 		# call_deferred ensures the lock is released after the current processing is done,
@@ -140,7 +218,6 @@ func _change_scene(path: String):
 ## Releases the scene lock variable. Called via call_deferred after initiating a scene change.
 func _release_scene_lock():
 	is_changing_scene = false
-	print("Scene change lock released.")
 
 
 ## Loads the current level using the stored indices. (Renamed from load_current_level)
@@ -156,12 +233,17 @@ func restart_level():
 		var level_path = levels[current_world_index][current_level_index]
 		
 		if level_path: # Ensure the slot isn't null (due to sparse indexing)
+			SaveManager.save_progress()
 			_change_scene(level_path)
 		else:
 			print("Error: Level path is null at W" + str(current_world_index) + " L" + str(current_level_index) + ". Check file naming.")
 	else:
 		print("Error: Current level index out of bounds.")
 
+func load_level_overview(level_completion_time : float):
+	current_completion_time = level_completion_time
+	SaveManager.save_progress()
+	_change_scene(LEVEL_OVERVIEW_PATH)
 
 ## Attempts to load the next level in the current world. (Renamed from load_next_level)
 func next_level():
@@ -186,7 +268,7 @@ func next_level():
 	else:
 		# Last level of the world completed (since we are on the current world)
 		print("WORLD " + str(current_world_index) + " COMPLETED!")
-		# Note: We do NOT increment current_world_index, following your requirement.
+		next_world()
 
 ## Attempts to load the previous level in the current world.
 func previous_level():

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c4v7o6x5hxsed"]
+[gd_scene load_steps=15 format=3 uid="uid://c4v7o6x5hxsed"]
 
 [ext_resource type="Script" uid="uid://binw5183yf80" path="res://Controllers/Player/player.gd" id="1_yblc1"]
 [ext_resource type="SpriteFrames" uid="uid://yxelobvwv3f4" path="res://Resources/Animations/default_male_animations.tres" id="2_x2wru"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://rxqt8qyuldaw" path="res://Controllers/Player/wall_collisions.gd" id="9_01uri"]
 [ext_resource type="AudioStream" uid="uid://by07kk1cqihrc" path="res://Imports/Free Sounds Pack/Punch 2-1.wav" id="10_w8i3p"]
 [ext_resource type="AudioStream" uid="uid://bq5dnhctmhut7" path="res://Imports/Free Sounds Pack/Whoosh 1-1.wav" id="11_e6fxb"]
+[ext_resource type="PackedScene" uid="uid://c82rdiwealeqb" path="res://Controllers/PlatformingUI/platforming_ui.tscn" id="12_x2wru"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4pj0q"]
 radius = 37.5
@@ -97,11 +98,15 @@ zoom = Vector2(0.26, 0.26)
 [node name="StepAudioPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_w8i3p")
 volume_db = -15.0
+bus = &"SFX"
 
 [node name="KickAudioPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_e6fxb")
 volume_db = -10.0
 pitch_scale = 0.7
+bus = &"SFX"
+
+[node name="PlatformingUI" parent="." instance=ExtResource("12_x2wru")]
 
 [connection signal="timeout" from="StateMachine/PlayerFallState" to="StateMachine/PlayerFallState" method="_on_timeout"]
 [connection signal="timeout" from="JumpBuffer" to="JumpBuffer" method="_on_timeout"]

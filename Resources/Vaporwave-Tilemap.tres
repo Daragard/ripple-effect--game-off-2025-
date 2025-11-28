@@ -1,12 +1,21 @@
-[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://dejt6hycl6n65"]
+[gd_resource type="TileSet" load_steps=7 format=3 uid="uid://dejt6hycl6n65"]
 
 [ext_resource type="Texture2D" uid="uid://cmij0jvakf67m" path="res://Resources/Art/Vaporwave-tiles.png" id="1_cnua2"]
+[ext_resource type="Texture2D" uid="uid://bp50qeuc1h3gl" path="res://Resources/Art/warning-sign.png" id="1_xdetf"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_uryf2"]
 tile_data = PackedInt32Array(0, 262145, 1, 65536, 262145, 2, 131072, 262145, 3, 1, 327681, 1, 65537, 327681, 2, 131073, 327681, 3, 2, 393217, 1, 65538, 393217, 2, 131074, 393217, 3)
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_cnua2"]
 tile_data = PackedInt32Array(0, 393217, 262144, 1, 327681, 262144)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uryf2"]
+texture = ExtResource("1_xdetf")
+texture_region_size = Vector2i(120, 120)
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wtiiq"]
 texture = ExtResource("1_cnua2")
@@ -208,5 +217,6 @@ terrain_set_0/mode = 1
 terrain_set_0/terrain_0/name = "Highlight"
 terrain_set_0/terrain_0/color = Color(1, 0.63600004, 0.089999974, 1)
 sources/1 = SubResource("TileSetAtlasSource_wtiiq")
+sources/0 = SubResource("TileSetAtlasSource_uryf2")
 pattern_0 = SubResource("TileMapPattern_uryf2")
 pattern_1 = SubResource("TileMapPattern_cnua2")

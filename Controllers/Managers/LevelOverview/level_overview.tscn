@@ -1,0 +1,259 @@
+[gd_scene load_steps=13 format=3 uid="uid://bymr8ljhopvdk"]
+
+[ext_resource type="Script" uid="uid://dtqine4hbss3q" path="res://Controllers/Managers/LevelOverview/level_overview.gd" id="1_cwes7"]
+[ext_resource type="FontFile" uid="uid://of04w1utycqm" path="res://Imports/Oswald-VariableFont_wght.ttf" id="1_dupm6"]
+[ext_resource type="Texture2D" uid="uid://bdh4y0y5tqgpp" path="res://Imports/Menu Buttons/Square Buttons/Square Buttons/Back Square Button.png" id="2_cwes7"]
+[ext_resource type="Script" uid="uid://cpe8wnxypaxl5" path="res://Controllers/Managers/Main Menu/grab_focus.gd" id="3_0pffo"]
+[ext_resource type="Texture2D" uid="uid://deloyorka3dsc" path="res://Imports/Menu Buttons/Square Buttons/Square Buttons/Return Square Button.png" id="4_slj0c"]
+[ext_resource type="Texture2D" uid="uid://b6r6vhc63qnwd" path="res://Imports/Menu Buttons/Square Buttons/Square Buttons/Next Square Button.png" id="5_cn3dq"]
+[ext_resource type="Texture2D" uid="uid://im8rib87i5bl" path="res://Imports/Menu Buttons/Square Buttons/Square Buttons/Home Square Button.png" id="6_31thk"]
+[ext_resource type="Texture2D" uid="uid://d25a6h47tsow2" path="res://Imports/Menu Buttons/Square Buttons/Square Buttons/Settings Square Button.png" id="8_3i7y1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o3wtr"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aestu"]
+bg_color = Color(0.18717596, 0.1871762, 0.18717608, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0, 0.83137256, 1, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iumh7"]
+bg_color = Color(0, 0.83137256, 1, 0.34509805)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1ui28"]
+bg_color = Color(0.9373749, 0.31392023, 0, 0.34509805)
+
+[node name="LevelOverview" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cwes7")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_o3wtr")
+
+[node name="Panel" type="Panel" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -150.0
+offset_right = 100.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_aestu")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/Panel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 159.14)
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Panel/Panel/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 0.76862746, 0, 1)
+theme_override_fonts/font = ExtResource("1_dupm6")
+theme_override_font_sizes/font_size = 33
+text = "Level Overview"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CurrentLevel" type="Label" parent="Panel/Panel/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 0.76862746, 0, 1)
+theme_override_fonts/font = ExtResource("1_dupm6")
+theme_override_font_sizes/font_size = 28
+text = "0-1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="Panel/Panel/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/Panel/MarginContainer/VBoxContainer/VBoxContainer/CenterContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="CenterContainer" parent="Panel/Panel/MarginContainer/VBoxContainer/VBoxContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/Panel/MarginContainer/VBoxContainer/VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="CurrentTime" type="Label" parent="Panel/Panel/MarginContainer/VBoxContainer/VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("1_dupm6")
+text = "00:00.000"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="TimeDifference" type="Label" parent="Panel/Panel/MarginContainer/VBoxContainer/VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.116666794, 1, 0, 1)
+theme_override_fonts/font = ExtResource("1_dupm6")
+text = "-0.0"
+vertical_alignment = 1
+
+[node name="BestTime" type="Label" parent="Panel/Panel/MarginContainer/VBoxContainer/VBoxContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_dupm6")
+text = "Best Time: 00:00.000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Panel/Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+texture = ExtResource("2_cwes7")
+expand_mode = 4
+stretch_mode = 4
+
+[node name="PreviousButton" type="Button" parent="Panel/Panel/MarginContainer/VBoxContainer/HBoxContainer/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_iumh7")
+theme_override_styles/focus = SubResource("StyleBoxFlat_1ui28")
+
+[node name="TextureRect2" type="TextureRect" parent="Panel/Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+texture = ExtResource("4_slj0c")
+expand_mode = 4
+stretch_mode = 4
+
+[node name="RestartButton" type="Button" parent="Panel/Panel/MarginContainer/VBoxContainer/HBoxContainer/TextureRect2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_iumh7")
+theme_override_styles/focus = SubResource("StyleBoxFlat_1ui28")
+
+[node name="TextureRect3" type="TextureRect" parent="Panel/Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+texture = ExtResource("5_cn3dq")
+expand_mode = 4
+stretch_mode = 4
+
+[node name="NextButton" type="Button" parent="Panel/Panel/MarginContainer/VBoxContainer/HBoxContainer/TextureRect3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_iumh7")
+theme_override_styles/focus = SubResource("StyleBoxFlat_1ui28")
+script = ExtResource("3_0pffo")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/Panel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 57)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 0
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Panel/Panel/MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Panel/Panel/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(0, 50.34)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+texture = ExtResource("6_31thk")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="HomeButton" type="Button" parent="Panel/Panel/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer2/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_iumh7")
+theme_override_styles/focus = SubResource("StyleBoxFlat_1ui28")
+
+[node name="TextureRect3" type="TextureRect" parent="Panel/Panel/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(0, 50.34)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+texture = ExtResource("8_3i7y1")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="SettingsButton" type="Button" parent="Panel/Panel/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer2/TextureRect3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_iumh7")
+theme_override_styles/focus = SubResource("StyleBoxFlat_1ui28")
+
+[connection signal="button_up" from="Panel/Panel/MarginContainer/VBoxContainer/HBoxContainer/TextureRect/PreviousButton" to="." method="_on_previous_button_button_up"]
+[connection signal="button_up" from="Panel/Panel/MarginContainer/VBoxContainer/HBoxContainer/TextureRect2/RestartButton" to="." method="_on_restart_button_button_up"]
+[connection signal="button_up" from="Panel/Panel/MarginContainer/VBoxContainer/HBoxContainer/TextureRect3/NextButton" to="." method="_on_next_button_button_up"]
+[connection signal="button_up" from="Panel/Panel/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer2/TextureRect/HomeButton" to="." method="_on_home_button_button_up"]
+[connection signal="button_up" from="Panel/Panel/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer2/TextureRect3/SettingsButton" to="." method="_on_settings_button_button_up"]

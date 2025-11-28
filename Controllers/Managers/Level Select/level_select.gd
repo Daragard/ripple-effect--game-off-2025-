@@ -2,20 +2,56 @@
 extends Node3D
 
 ## The main menu scene path to load when the back button is pressed.
-## Set this in the Inspector to the file path (e.g., "res://scenes/main_menu.tscn").
 @export var main_menu_scene_path: String = "res://Controllers/Managers/Main Menu/main_menu.tscn"
 
 @export var level_containers : Array[Node]
 
 func _ready() -> void:
+	# --- NEW: Get Saved Progress Data ---
+	# NOTE: Assuming SaveData is a globally accessible class/singleton with these properties
+	# furthest_world is typically 0-based index
+	# furthest_level is typically 1-based index (e.g., Level 3)
+	var furthest_world: int = SaveManager.data.furthest_world
+	var furthest_level: int = SaveManager.data.furthest_level + 1
+	
+	print("Furthest Progress: W%d L%d" % [furthest_world, furthest_level])
+	# ------------------------------------
+	
 	var container_count : int = 0
 	for container in level_containers:
+		# 'container_count' represents the World Index (0, 1, 2, ...)
+		var current_world_index = container_count
+		
 		for child in container.get_children():
 			if child is Button:
-				print("adding to " + child.name)
-				var load_level_function = Callable(self, "load_level").bind(container_count, int(child.text))
-				child.connect("button_up", load_level_function)
-		
+				var current_level_number = int(child.text) # This is the 1-based level number (1, 2, 3, ...)
+				
+				# 1. Determine if the button should be disabled
+				var should_be_disabled: bool = false
+				
+				if current_world_index > furthest_world:
+					# Case A: Current world is strictly ahead of the furthest reached world.
+					should_be_disabled = true
+				elif current_world_index == furthest_world:
+					# Case B: Current world is the furthest reached world.
+					if current_level_number > furthest_level:
+						# Disable any level in this world that is ahead of the furthest level.
+						should_be_disabled = true
+				# Case C: current_world_index < furthest_world: Button is in a previous world, so it's always enabled.
+				
+				
+				# 2. Disable the button if needed and update its visual style
+				if should_be_disabled:
+					child.disabled = true
+					# Optional: Change the visual appearance to look "locked"
+					# You might want to use a custom theme or texture here.
+					# Example: child.modulate = Color(0.5, 0.5, 0.5) # Gray it out
+					print("Disabled W%d L%d" % [current_world_index, current_level_number])
+				else:
+					# 3. If the level is unlocked, connect its signal
+					var load_level_function = Callable(self, "load_level").bind(current_world_index, current_level_number)
+					child.connect("button_up", load_level_function)
+
 		container_count += 1
 
 

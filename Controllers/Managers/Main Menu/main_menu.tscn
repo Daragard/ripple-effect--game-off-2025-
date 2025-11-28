@@ -45,8 +45,6 @@ draw_center = false
 
 [node name="MainMenu" type="Node3D"]
 script = ExtResource("1_acuck")
-main_game_scene_path = "res://Levels/0-1.tscn"
-level_select_scene_path = "res://Controllers/Managers/Level Select/level_select.tscn"
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
@@ -64,17 +62,6 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-
-[node name="TextureRect" type="TextureRect" parent="Control"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("1_5bbvn")
-stretch_mode = 1
 
 [node name="Label" type="Label" parent="Control"]
 layout_mode = 0
@@ -185,7 +172,7 @@ alignment = 0
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 
 [node name="Bomb" type="Node3D" parent="." node_paths=PackedStringArray("green_mesh_node", "orange_mesh_node", "scene_light")]
-transform = Transform3D(0.3835198, 0.055038016, -0.496773, 0, 0.6261687, 0.06937392, 0.4998125, -0.042232174, 0.38118753, -2.772, -0.38, 3.957)
+transform = Transform3D(0.46448466, 0.1196153, -0.4084681, 0, 0.60460913, 0.17705305, 0.42562187, -0.13053718, 0.4457646, -2.772, -0.38, 3.957)
 script = ExtResource("2_ukv7s")
 green_mesh_node = NodePath("GreenBomb")
 orange_mesh_node = NodePath("Orange_Bomb")
